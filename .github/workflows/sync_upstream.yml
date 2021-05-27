@@ -25,6 +25,6 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
           git checkout -b upstream
-          git -c http.extraHeader="Authorization: Basic ${B64_PAT}" --no-ff pull https://github.com/ApolloPavilion/original.git main
+          git -c http.extraHeader="Authorization: Basic ${B64_PAT}" pull --no-ff https://github.com/ApolloPavilion/original.git main
           git push -f origin upstream 
           gh pr create --title "Upstream changes" --body "Latest changes from ${date}"
