@@ -18,4 +18,6 @@ jobs:
         
       - name: Pull (Fast-Forward) upstream changes
         run: |
-          git pull git@github.com:ApolloPavilion/original.git main
+          MY_PAT=${{ secrets.GITHUB_TOKEN }}
+          B64_PAT=$(printf "%s"":$MY_PAT" | base64)
+          git -c http.extraHeader="Authorization: Basic ${B64_PAT}" pull git@github.com:ApolloPavilion/original.git main
