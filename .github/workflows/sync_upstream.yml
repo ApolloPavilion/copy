@@ -26,6 +26,7 @@ jobs:
           git config --global user.name "Your Name"
           git config pull.rebase true
           git checkout -b upstream
+          git reset --hard $(git log --pretty=format:%H | tail -1)
           git -c http.extraHeader="Authorization: Basic ${B64_PAT}" pull https://github.com/ApolloPavilion/original.git main
           git push -f origin upstream 
           gh pr create --title "Upstream changes" --body "Latest changes from ${date}"
