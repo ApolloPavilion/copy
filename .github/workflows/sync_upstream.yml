@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Pull (Fast-Forward) upstream changes
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
           MY_PAT=${{ secrets.GITHUB_TOKEN }}
           B64_PAT=$(printf "%s"":$MY_PAT" | base64)
@@ -26,5 +28,4 @@ jobs:
           git checkout -b upstream
           git -c http.extraHeader="Authorization: Basic ${B64_PAT}" pull https://github.com/ApolloPavilion/original.git main
           git push -f origin upstream 
-          gh auth login --with-token < echo "${{ secrets.GITHUB_TOKEN }}"
           gh pr create --title "Upstream changes" --body "Latest changes from ${date}"
