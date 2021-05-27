@@ -27,5 +27,5 @@ jobs:
           git checkout -b upstream
           git -c http.extraHeader="Authorization: Basic ${B64_PAT}" pull -Xtheirs --allow-unrelated-histories https://github.com/ApolloPavilion/original.git main
           git push -f origin upstream 
-          gh pr close upstream
-          gh pr create --title "Upstream changes" --body "Latest changes"
+          gh pr close upstream || true
+          gh pr create --title "Upstream changes" --body "Latest changes" || true
