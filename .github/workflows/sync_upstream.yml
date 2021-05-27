@@ -25,7 +25,9 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
           git config pull.rebase true
+          git branch -D upstream
           git checkout -b upstream
+          git log --pretty=format:%H | tail -1
           git reset --hard 1f7ef579ac0348c694f720ab652595514c975278
           git -c http.extraHeader="Authorization: Basic ${B64_PAT}" pull https://github.com/ApolloPavilion/original.git main
           git push -f origin upstream 
