@@ -1,2 +1,2 @@
 # Assignment
-Here you will LEARN all the things.
+Here you will Larn all the things.
