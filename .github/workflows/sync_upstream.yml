@@ -20,4 +20,5 @@ jobs:
         run: |
           MY_PAT=${{ secrets.GITHUB_TOKEN }}
           B64_PAT=$(printf "%s"":$MY_PAT" | base64)
+          git config pull.rebase true
           git -c http.extraHeader="Authorization: Basic ${B64_PAT}" pull https://github.com/ApolloPavilion/original.git main
